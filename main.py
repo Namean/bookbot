@@ -1,5 +1,9 @@
+# main.py
+# The program's entry point and file-reading logic
+
 import sys
 from pathlib import Path
+from stats import get_num_words
 
 
 def get_book_text(path_to_file) -> str:
@@ -18,23 +22,10 @@ def get_book_text(path_to_file) -> str:
         else:
             sys.exit(f"Error: file not found '{path_to_file}'")
 
-
-def count_words(book_text: str = None) -> int:
-    num_words = 0
-
-    if book_text is None:
-        return num_words 
-
-    num_words = len(book_text.split())
-    print(f"Found {num_words} total words")
-
-    return len(book_text.split())
-
-
 def main():
     book_path = Path("books/frankenstein.txt")
     book_text = get_book_text(book_path)
-    count_words(book_text)
+    get_num_words(book_text)
 
 
 if __name__ == "__main__":
